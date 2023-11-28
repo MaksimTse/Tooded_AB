@@ -33,9 +33,9 @@
             this.button2 = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.Hind_txt = new System.Windows.Forms.TextBox();
+            this.Kogus_txt = new System.Windows.Forms.TextBox();
+            this.Toode_txt = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -44,7 +44,7 @@
             this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.Lisa_Kat_btn = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
+            this.Lisa = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -53,9 +53,9 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(93, 236);
+            this.dataGridView1.Location = new System.Drawing.Point(82, 236);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(607, 193);
+            this.dataGridView1.Size = new System.Drawing.Size(682, 193);
             this.dataGridView1.TabIndex = 0;
             // 
             // button1
@@ -67,12 +67,13 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(200, 193);
+            this.button2.Location = new System.Drawing.Point(85, 193);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(70, 37);
             this.button2.TabIndex = 2;
             this.button2.Text = "Kustuta kategooria";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.Kustuta_Kat_btn_Click);
             // 
             // comboBox1
             // 
@@ -90,26 +91,26 @@
             this.pictureBox1.TabIndex = 4;
             this.pictureBox1.TabStop = false;
             // 
-            // textBox1
+            // Hind_txt
             // 
-            this.textBox1.Location = new System.Drawing.Point(211, 112);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(90, 20);
-            this.textBox1.TabIndex = 5;
+            this.Hind_txt.Location = new System.Drawing.Point(211, 112);
+            this.Hind_txt.Name = "Hind_txt";
+            this.Hind_txt.Size = new System.Drawing.Size(90, 20);
+            this.Hind_txt.TabIndex = 5;
             // 
-            // textBox2
+            // Kogus_txt
             // 
-            this.textBox2.Location = new System.Drawing.Point(211, 86);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(89, 20);
-            this.textBox2.TabIndex = 6;
+            this.Kogus_txt.Location = new System.Drawing.Point(211, 86);
+            this.Kogus_txt.Name = "Kogus_txt";
+            this.Kogus_txt.Size = new System.Drawing.Size(89, 20);
+            this.Kogus_txt.TabIndex = 6;
             // 
-            // textBox3
+            // Toode_txt
             // 
-            this.textBox3.Location = new System.Drawing.Point(211, 60);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(89, 20);
-            this.textBox3.TabIndex = 7;
+            this.Toode_txt.Location = new System.Drawing.Point(211, 60);
+            this.Toode_txt.Name = "Toode_txt";
+            this.Toode_txt.Size = new System.Drawing.Size(89, 20);
+            this.Toode_txt.TabIndex = 7;
             // 
             // label1
             // 
@@ -147,7 +148,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(276, 193);
+            this.button3.Location = new System.Drawing.Point(161, 193);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(70, 37);
             this.button3.TabIndex = 12;
@@ -156,40 +157,43 @@
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(428, 193);
+            this.button5.Location = new System.Drawing.Point(313, 193);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(70, 37);
             this.button5.TabIndex = 14;
             this.button5.Text = "Uuenda";
             this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.Muuda_btn_Click);
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(504, 193);
+            this.button6.Location = new System.Drawing.Point(389, 193);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(70, 37);
             this.button6.TabIndex = 15;
             this.button6.Text = "Kustuta";
             this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.Kustuta_btn_Click);
             // 
             // Lisa_Kat_btn
             // 
-            this.Lisa_Kat_btn.Location = new System.Drawing.Point(124, 193);
+            this.Lisa_Kat_btn.Location = new System.Drawing.Point(307, 135);
             this.Lisa_Kat_btn.Name = "Lisa_Kat_btn";
-            this.Lisa_Kat_btn.Size = new System.Drawing.Size(70, 37);
+            this.Lisa_Kat_btn.Size = new System.Drawing.Size(88, 25);
             this.Lisa_Kat_btn.TabIndex = 19;
             this.Lisa_Kat_btn.Text = "Lisa kategooria";
             this.Lisa_Kat_btn.UseVisualStyleBackColor = true;
             this.Lisa_Kat_btn.Click += new System.EventHandler(this.Lisa_Kat_btn_Click);
             // 
-            // button7
+            // Lisa
             // 
-            this.button7.Location = new System.Drawing.Point(352, 193);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(70, 37);
-            this.button7.TabIndex = 20;
-            this.button7.Text = "Lisa";
-            this.button7.UseVisualStyleBackColor = true;
+            this.Lisa.Location = new System.Drawing.Point(237, 193);
+            this.Lisa.Name = "Lisa";
+            this.Lisa.Size = new System.Drawing.Size(70, 37);
+            this.Lisa.TabIndex = 20;
+            this.Lisa.Text = "Lisa";
+            this.Lisa.UseVisualStyleBackColor = true;
+            this.Lisa.Click += new System.EventHandler(this.Lisa_btn_Click);
             // 
             // label5
             // 
@@ -206,7 +210,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.button7);
+            this.Controls.Add(this.Lisa);
             this.Controls.Add(this.Lisa_Kat_btn);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.button5);
@@ -215,9 +219,9 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.Toode_txt);
+            this.Controls.Add(this.Kogus_txt);
+            this.Controls.Add(this.Hind_txt);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.button2);
@@ -239,9 +243,9 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox Hind_txt;
+        private System.Windows.Forms.TextBox Kogus_txt;
+        private System.Windows.Forms.TextBox Toode_txt;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
@@ -250,7 +254,7 @@
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button Lisa_Kat_btn;
-        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button Lisa;
         private System.Windows.Forms.Label label5;
     }
 }
