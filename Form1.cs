@@ -29,6 +29,8 @@ namespace Tooded_AB
             InitializeComponent();
             NaitaAndmed();
             NaitaKategooriad();
+
+            dataGridView1.SelectionChanged += dataGridView1_SelectionChanged;
         }
 
         public void NaitaAndmed()
@@ -234,7 +236,7 @@ namespace Tooded_AB
                     File.Copy(open.FileName, save.FileName);
                     Image img = Image.FromFile(save.FileName);
                     Toode_pb.SizeMode = PictureBoxSizeMode.StretchImage;
-                    Toode_pb.ClientSize = new Size(150, 150);
+                    Toode_pb.ClientSize = new Size(200, 200);
                     Toode_pb.Image = (Image)(new Bitmap(img, Toode_pb.ClientSize));
                     //Toode_pb.Image = Image.FromFile(save.FileName);
                 }
@@ -246,6 +248,32 @@ namespace Tooded_AB
 
             open.ShowDialog();
         }
+        private void dataGridView1_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                string imageName = dataGridView1.SelectedRows[0].Cells["Pilt"].Value.ToString();
+                string imagePath = Path.Combine(@"C:\Users\opilane\source\repos\TARpv22_Maksim_Tsepelevits\Tooded_AB\bin\Debug\Images", imageName);
+
+                if (File.Exists(imagePath))
+                {
+                    Image img = Image.FromFile(imagePath);
+
+                    Toode_pb.SizeMode = PictureBoxSizeMode.StretchImage;
+                    Toode_pb.ClientSize = new Size(200, 200);
+                    Toode_pb.Image = (Image)(new Bitmap(img, Toode_pb.ClientSize));
+                }
+                else
+                {
+                    MessageBox.Show($"Image file '{imageName}' not found.");
+                }
+            }
+            else
+            {
+                Toode_pb.Image = null;
+            }
+        }
+
 
     }
 }
