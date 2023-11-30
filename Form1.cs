@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -41,7 +41,26 @@ namespace Tooded_AB
             adapter_toode = new SqlDataAdapter("SELECT T.Id, T.Toodenimetus, T.Kogus, T.Hind, T.Pilt, K.Kategooria_nimetus as Kategooria " +
                 "FROM Toodetable T INNER JOIN Kategooriatable K ON T.Kategooria = K.Id", connect);
             adapter_toode.Fill(dt_Toode);
+            dataGridView1.Columns.Clear();
             dataGridView1.DataSource = dt_Toode;
+            DataGridViewComboBoxColumn combo_kat = new DataGridViewComboBoxColumn();
+            combo_kat.HeaderText = "Kategooria";
+            combo_kat.Name = "KategooriaColumn";
+            combo_kat.DataPropertyName = "Kategooria";
+            HashSet<string> uniqueCategories = new HashSet<string>();
+            foreach (DataRow item in dt_Toode.Rows)
+            {
+                string category = item["Kategooria"].ToString();
+                if (!uniqueCategories.Contains(category))
+                {
+                    uniqueCategories.Add(category);
+                    combo_kat.Items.Add(category);
+                }
+            }
+            dataGridView1.Columns.Add(combo_kat);
+            dataGridView1.Columns["Kategooria"].Visible = false;
+                       
+            
             connect.Close();
         }
         private void NaitaKategooriad()

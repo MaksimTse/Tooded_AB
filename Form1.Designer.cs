@@ -32,7 +32,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.Toode_pb = new System.Windows.Forms.PictureBox();
             this.Hind_txt = new System.Windows.Forms.TextBox();
             this.Kogus_txt = new System.Windows.Forms.TextBox();
             this.Toode_txt = new System.Windows.Forms.TextBox();
@@ -40,14 +40,14 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
+            this.otsi_fail_btn = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.Lisa_Kat_btn = new System.Windows.Forms.Button();
             this.Lisa = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Toode_pb)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -83,13 +83,13 @@
             this.comboBox1.Size = new System.Drawing.Size(90, 21);
             this.comboBox1.TabIndex = 3;
             // 
-            // pictureBox1
+            // Toode_pb
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(422, 26);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(152, 150);
-            this.pictureBox1.TabIndex = 4;
-            this.pictureBox1.TabStop = false;
+            this.Toode_pb.Location = new System.Drawing.Point(524, 12);
+            this.Toode_pb.Name = "Toode_pb";
+            this.Toode_pb.Size = new System.Drawing.Size(200, 200);
+            this.Toode_pb.TabIndex = 4;
+            this.Toode_pb.TabStop = false;
             // 
             // Hind_txt
             // 
@@ -146,18 +146,19 @@
             this.label4.TabIndex = 11;
             this.label4.Text = "Toode Nimetus";
             // 
-            // button3
+            // otsi_fail_btn
             // 
-            this.button3.Location = new System.Drawing.Point(161, 193);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(70, 37);
-            this.button3.TabIndex = 12;
-            this.button3.Text = "Otsi fail";
-            this.button3.UseVisualStyleBackColor = true;
+            this.otsi_fail_btn.Location = new System.Drawing.Point(444, 189);
+            this.otsi_fail_btn.Name = "otsi_fail_btn";
+            this.otsi_fail_btn.Size = new System.Drawing.Size(58, 27);
+            this.otsi_fail_btn.TabIndex = 12;
+            this.otsi_fail_btn.Text = "Otsi fail";
+            this.otsi_fail_btn.UseVisualStyleBackColor = true;
+            this.otsi_fail_btn.Click += new System.EventHandler(this.otsi_fail_btn_Click);
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(313, 193);
+            this.button5.Location = new System.Drawing.Point(237, 193);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(70, 37);
             this.button5.TabIndex = 14;
@@ -167,7 +168,7 @@
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(389, 193);
+            this.button6.Location = new System.Drawing.Point(313, 193);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(70, 37);
             this.button6.TabIndex = 15;
@@ -187,7 +188,7 @@
             // 
             // Lisa
             // 
-            this.Lisa.Location = new System.Drawing.Point(237, 193);
+            this.Lisa.Location = new System.Drawing.Point(161, 193);
             this.Lisa.Name = "Lisa";
             this.Lisa.Size = new System.Drawing.Size(70, 37);
             this.Lisa.TabIndex = 20;
@@ -214,7 +215,7 @@
             this.Controls.Add(this.Lisa_Kat_btn);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.button5);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.otsi_fail_btn);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -222,7 +223,7 @@
             this.Controls.Add(this.Toode_txt);
             this.Controls.Add(this.Kogus_txt);
             this.Controls.Add(this.Hind_txt);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.Toode_pb);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
@@ -230,7 +231,7 @@
             this.Name = "Form1";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Toode_pb)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -242,7 +243,7 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox Toode_pb;
         private System.Windows.Forms.TextBox Hind_txt;
         private System.Windows.Forms.TextBox Kogus_txt;
         private System.Windows.Forms.TextBox Toode_txt;
@@ -250,7 +251,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button otsi_fail_btn;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button Lisa_Kat_btn;
