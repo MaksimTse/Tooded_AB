@@ -232,7 +232,11 @@ namespace Tooded_AB
                 if (save.ShowDialog() == DialogResult.OK)
                 {
                     File.Copy(open.FileName, save.FileName);
-                    Toode_pb.Image = Image.FromFile(save.FileName);
+                    Image img = Image.FromFile(save.FileName);
+                    Toode_pb.SizeMode = PictureBoxSizeMode.StretchImage;
+                    Toode_pb.ClientSize = new Size(150, 150);
+                    Toode_pb.Image = (Image)(new Bitmap(img, Toode_pb.ClientSize));
+                    //Toode_pb.Image = Image.FromFile(save.FileName);
                 }
             }
             else
