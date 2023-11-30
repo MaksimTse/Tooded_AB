@@ -1,9 +1,10 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,6 +19,10 @@ namespace Tooded_AB
 
         SqlDataAdapter adapter_toode, adapter_kategooria;
         SqlCommand command;
+
+        SaveFileDialog save;
+        OpenFileDialog open;
+
         int Id;
         public Form1()
         {
@@ -33,33 +38,9 @@ namespace Tooded_AB
 
             adapter_toode = new SqlDataAdapter("SELECT T.Id, T.Toodenimetus, T.Kogus, T.Hind, T.Pilt, K.Kategooria_nimetus as Kategooria " +
                 "FROM Toodetable T INNER JOIN Kategooriatable K ON T.Kategooria = K.Id", connect);
-
             adapter_toode.Fill(dt_Toode);
+            dataGridView1.DataSource = dt_Toode;
             connect.Close();
-
-            dataGridView1.Columns.Clear();
-
-            dataGridView1.Columns.Add("Id", "ID");
-            dataGridView1.Columns.Add("Toodenimetus", "Tootenimetus");
-            dataGridView1.Columns.Add("Kogus", "Kogus");
-            dataGridView1.Columns.Add("Hind", "Hind");
-            dataGridView1.Columns.Add("Pilt", "Pilt");
-
-            DataGridViewComboBoxColumn kategooriaColumn = new DataGridViewComboBoxColumn();
-            kategooriaColumn.Name = "Kategooria";
-            kategooriaColumn.HeaderText = "Kategooria";
-
-            var distinctKategooriad = dt_Toode.AsEnumerable().Select(row => row.Field<string>("Kategooria")).Distinct().ToList();
-            kategooriaColumn.Items.AddRange(distinctKategooriad.ToArray());
-            kategooriaColumn.DisplayStyle = DataGridViewComboBoxDisplayStyle.Nothing;
-            kategooriaColumn.AutoComplete = true;
-
-            dataGridView1.Columns.Add(kategooriaColumn);
-
-            foreach (DataRow row in dt_Toode.Rows)
-            {
-                dataGridView1.Rows.Add(row["Id"], row["Toodenimetus"], row["Kogus"], row["Hind"], row["Pilt"], row["Kategooria"]);
-            }
         }
         private void NaitaKategooriad()
         {
@@ -232,6 +213,34 @@ namespace Tooded_AB
             {
                 MessageBox.Show("Valige rida, mida soovite kustutada!");
             }
+        }
+        private void otsi_fail_btn_Click(object sender, EventArgs e)
+        {
+            open = new OpenFileDialog();
+            open.InitialDirectory = @"C:\Users\opilane\source\repos\TARpv22_Maksim_Tsepelevits\Tooded_AB\bin\Debug";
+            open.Multiselect = true;
+            open.Filter = "Images Files(*.jpeg;*.png;*.jpg;*.bmp)|*jpeg;*.png;*.jpg;*.bmp";
+
+
+            FileInfo open_info = new FileInfo(@"C:\Users\opilane\source\repos\TARpv22_Maksim_Tsepelevits\Tooded_AB\bin\Debug\" + open.FileName);
+            if (open.ShowDialog()==DialogResult.OK && Toode_txt.Text != null)
+            {
+                save = new SaveFileDialog();
+                save.InitialDirectory = Path.GetFullPath(@"..\..\Images");
+                save.FileName = Toode_txt.Text + Path.GetExtension(open.FileName);
+                save.Filter = "Images" + Path.GetExtension(open.FileName)+"|"+Path.GetExtension(open.FileName);
+                if (save.ShowDialog() == DialogResult.OK)
+                {
+                    File.Copy(open.FileName, save.FileName);
+                    Toode_pb.Image = Image.FromFile(save.FileName);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Puudub toode nimetus või oli vajutatud Cancel");
+            }
+
+            open.ShowDialog();
         }
 
     }
