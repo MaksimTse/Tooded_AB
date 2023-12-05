@@ -143,7 +143,6 @@ namespace Tooded_AB
                 try
                 {
                     open = new OpenFileDialog();
-                    open.InitialDirectory = @"C:\Users\opilane\source\repos\TARpv22_Maksim_Tsepelevits\Tooded_AB\bin\Debug";
                     open.Multiselect = false;
                     open.Filter = "Images Files(*.jpeg;*.png;*.jpg;*.bmp)|*.jpeg;*.png;*.jpg;*.bmp";
 
@@ -156,19 +155,17 @@ namespace Tooded_AB
                         command.ExecuteNonQuery();
                         Id = Convert.ToInt32(command.ExecuteScalar());
 
-                        string imageFileName = Path.GetFileName(open.FileName);
+                        string imagePath = open.FileName;
+                        string imageFileName = Path.GetFileName(imagePath);
 
-                        Toode_pb.Image = null;
-
-                        string imageDestinationPath = Path.Combine(@"C:\Users\opilane\source\repos\TARpv22_Maksim_Tsepelevits\Tooded_AB\bin\Debug\Images", imageFileName);
-                        File.Copy(open.FileName, imageDestinationPath, true);
+                        Toode_pb.Image = Image.FromFile(imagePath);
 
                         command = new SqlCommand("INSERT INTO Toodetable (Toodenimetus, Kogus, Hind, Pilt, Kategooria) VALUES" +
                         " (@toode, @kogus, @hind, @pilt, @kat)", connect);
                         command.Parameters.AddWithValue("@toode", Toode_txt.Text);
                         command.Parameters.AddWithValue("@kogus", Kogus_txt.Text);
                         command.Parameters.AddWithValue("@hind", Hind_txt.Text);
-                        command.Parameters.AddWithValue("@pilt", imageFileName);
+                        command.Parameters.AddWithValue("@pilt", imagePath); // Сохраняем только путь, а не копируем файл
                         command.Parameters.AddWithValue("@kat", Id);
 
                         command.ExecuteNonQuery();
