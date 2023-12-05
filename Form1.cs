@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -138,44 +138,57 @@ namespace Tooded_AB
 
         private void Lisa_btn_Click(object sender, EventArgs e)
         {
-            if (Toode_txt.Text.Trim() != string.Empty && Kogus_txt.Text.Trim() != string.Empty && 
-                Hind_txt.Text.Trim()!=string.Empty && comboBox1.SelectedItem!=null)
+            if (Toode_txt.Text.Trim() != string.Empty && Kogus_txt.Text.Trim() != string.Empty && Hind_txt.Text.Trim() != string.Empty && comboBox1.SelectedItem != null)
             {
                 try
                 {
-                    connect.Open();
+                    open = new OpenFileDialog();
+                    open.InitialDirectory = @"C:\Users\opilane\source\repos\TARpv22_Maksim_Tsepelevits\Tooded_AB\bin\Debug";
+                    open.Multiselect = false;
+                    open.Filter = "Images Files(*.jpeg;*.png;*.jpg;*.bmp)|*.jpeg;*.png;*.jpg;*.bmp";
 
-                    command = new SqlCommand("SELECT Id FROM Kategooriatable WHERE Kategooria_nimetus=@kat", connect);
-                    command.Parameters.AddWithValue("@kat", comboBox1.Text);
-                    command.ExecuteNonQuery();
-                    Id = Convert.ToInt32(command.ExecuteScalar());
+                    if (open.ShowDialog() == DialogResult.OK)
+                    {
+                        connect.Open();
 
-                    command = new SqlCommand("INSERT INTO Toodetable (Toodenimetus, Kogus, Hind, Pilt, Kategooria) VALUES" +
-                    " (@toode, @kogus, @hind, @pilt, @kat)", connect);
-                    command.Parameters.AddWithValue("@toode", Toode_txt.Text);
-                    command.Parameters.AddWithValue("@kogus", Kogus_txt.Text);
-                    command.Parameters.AddWithValue("@hind", Hind_txt.Text);
-                    command.Parameters.AddWithValue("@pilt", Toode_txt.Text + ".jpg");
-                    command.Parameters.AddWithValue("@kat", Id); //id?
+                        command = new SqlCommand("SELECT Id FROM Kategooriatable WHERE Kategooria_nimetus=@kat", connect);
+                        command.Parameters.AddWithValue("@kat", comboBox1.Text);
+                        command.ExecuteNonQuery();
+                        Id = Convert.ToInt32(command.ExecuteScalar());
 
-                    command.ExecuteNonQuery();
+                        string imageFileName = Path.GetFileName(open.FileName);
 
-                    connect.Close();
+                        Toode_pb.Image = null;
 
-                    NaitaAndmed();
+                        string imageDestinationPath = Path.Combine(@"C:\Users\opilane\source\repos\TARpv22_Maksim_Tsepelevits\Tooded_AB\bin\Debug\Images", imageFileName);
+                        File.Copy(open.FileName, imageDestinationPath, true);
+
+                        command = new SqlCommand("INSERT INTO Toodetable (Toodenimetus, Kogus, Hind, Pilt, Kategooria) VALUES" +
+                        " (@toode, @kogus, @hind, @pilt, @kat)", connect);
+                        command.Parameters.AddWithValue("@toode", Toode_txt.Text);
+                        command.Parameters.AddWithValue("@kogus", Kogus_txt.Text);
+                        command.Parameters.AddWithValue("@hind", Hind_txt.Text);
+                        command.Parameters.AddWithValue("@pilt", imageFileName);
+                        command.Parameters.AddWithValue("@kat", Id);
+
+                        command.ExecuteNonQuery();
+
+                        connect.Close();
+
+                        NaitaAndmed();
+                    }
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-
-                    MessageBox.Show("Andmebaasiga viga!");
+                    MessageBox.Show($"Andmebaasiga viga: {ex.Message}");
                 }
-
             }
             else
             {
                 MessageBox.Show("Sisesta andmeid!");
             }
         }
+
         private void MuudaKategooriat(int toodeId, int uusKategooriaId)
         {
             connect.Open();
@@ -257,7 +270,6 @@ namespace Tooded_AB
                     Toode_pb.SizeMode = PictureBoxSizeMode.StretchImage;
                     Toode_pb.ClientSize = new Size(200, 200);
                     Toode_pb.Image = (Image)(new Bitmap(img, Toode_pb.ClientSize));
-                    //Toode_pb.Image = Image.FromFile(save.FileName);
                 }
             }
             else
