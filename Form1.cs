@@ -70,7 +70,7 @@ namespace Tooded_AB
             adapter_kategooria = new SqlDataAdapter("SELECT * FROM Kategooriatable", connect);
             adapter_kategooria.Fill(dt_Kategooria);
 
-            comboBox1.MaxDropDownItems = dt_Kategooria.Rows.Count; // Устанавливаем максимальное количество элементов
+            comboBox1.MaxDropDownItems = dt_Kategooria.Rows.Count;
 
             foreach (DataRow item in dt_Kategooria.Rows)
             {
@@ -156,7 +156,6 @@ namespace Tooded_AB
                         Id = Convert.ToInt32(command.ExecuteScalar());
 
                         string imagePath = open.FileName;
-                        string imageFileName = Path.GetFileName(imagePath);
 
                         Toode_pb.Image = Image.FromFile(imagePath);
 
@@ -165,7 +164,7 @@ namespace Tooded_AB
                         command.Parameters.AddWithValue("@toode", Toode_txt.Text);
                         command.Parameters.AddWithValue("@kogus", Kogus_txt.Text);
                         command.Parameters.AddWithValue("@hind", Hind_txt.Text);
-                        command.Parameters.AddWithValue("@pilt", imagePath); // Сохраняем только путь, а не копируем файл
+                        command.Parameters.AddWithValue("@pilt", imagePath); 
                         command.Parameters.AddWithValue("@kat", Id);
 
                         command.ExecuteNonQuery();
@@ -186,10 +185,14 @@ namespace Tooded_AB
             }
         }
 
-        private void MuudaKategooriat(int toodeId, int uusKategooriaId)
+        private void MuudaToode(int toodeId, string uusToodeNimetus, int uusKogus, decimal uusHind, string uusPilt, int uusKategooriaId)
         {
             connect.Open();
-            SqlCommand updateCommand = new SqlCommand("UPDATE Toodetable SET Kategooria = @uusKategooria WHERE Id = @toodeId", connect);
+            SqlCommand updateCommand = new SqlCommand("UPDATE Toodetable SET Toodenimetus = @uusToodeNimetus, Kogus = @uusKogus, Hind = @uusHind, Pilt = @uusPilt, Kategooria = @uusKategooria WHERE Id = @toodeId", connect);
+            updateCommand.Parameters.AddWithValue("@uusToodeNimetus", uusToodeNimetus);
+            updateCommand.Parameters.AddWithValue("@uusKogus", uusKogus);
+            updateCommand.Parameters.AddWithValue("@uusHind", uusHind);
+            updateCommand.Parameters.AddWithValue("@uusPilt", uusPilt);
             updateCommand.Parameters.AddWithValue("@uusKategooria", uusKategooriaId);
             updateCommand.Parameters.AddWithValue("@toodeId", toodeId);
             updateCommand.ExecuteNonQuery();
@@ -198,28 +201,78 @@ namespace Tooded_AB
 
         private void Muuda_btn_Click(object sender, EventArgs e)
         {
-            if (dataGridView1.SelectedRows.Count > 0 && comboBox1.SelectedItem != null)
+            if (dataGridView1.SelectedRows.Count > 0)
             {
-                int selectedRowIndex = dataGridView1.SelectedRows[0].Index;
-                int selectedToodeId = Convert.ToInt32(dataGridView1.Rows[selectedRowIndex].Cells["Id"].Value);
+                DataGridViewRow val_rida = dataGridView1.SelectedRows[0];
+                int val_rida_ID = Convert.ToInt32(val_rida.Cells["Id"].Value);
 
-                string selectedKategooria = comboBox1.SelectedItem.ToString();
+                if (Toode_txt.Text.Trim() != string.Empty && Kogus_txt.Text.Trim() != string.Empty && Hind_txt.Text.Trim() != string.Empty && comboBox1.SelectedItem != null)
+                {
+                    OpenFileDialog open = new OpenFileDialog();
+                    open.InitialDirectory = @"..\..\Images";
+                    open.Multiselect = false;
+                    open.Filter = "Images Files(*.jpeg;*.png;*.jpg;*.bmp)|*.jpeg;*.png;*.jpg;*.bmp";
 
-                connect.Open();
-                SqlCommand command = new SqlCommand("SELECT Id FROM Kategooriatable WHERE Kategooria_nimetus=@kat", connect);
-                command.Parameters.AddWithValue("@kat", selectedKategooria);
-                int selectedKategooriaId = Convert.ToInt32(command.ExecuteScalar());
-                connect.Close();
+                    if (open.ShowDialog() == DialogResult.OK)
+                    {
+                        string imageFileName = Path.GetFileName(open.FileName);
 
-                MuudaKategooriat(selectedToodeId, selectedKategooriaId);
+                        string UUS_ToodeNimetus = Toode_txt.Text;
+                        int UUS_Kogus = int.Parse(Kogus_txt.Text);
+                        float UUS_Hind = float.Parse(Hind_txt.Text);
+                        string UUS_Pilt = imageFileName;
+                        string UUS_Kategooria = comboBox1.SelectedItem.ToString();
 
-                NaitaAndmed();
+                        try
+                        {
+                            if (connect.State == ConnectionState.Closed)
+                            {
+                                connect.Open();
+                            }
+                            command = new SqlCommand("SELECT Id FROM Kategooriatable WHERE Kategooria_nimetus = @kat", connect);
+                            command.Parameters.AddWithValue("@kat", UUS_Kategooria);
+                            int kategooriaId = Convert.ToInt32(command.ExecuteScalar());
+
+                            command = new SqlCommand("UPDATE Toodetable SET Toodenimetus = @toode, Kogus = @kog, Hind = @pc, Pilt = @pilt, Kategooria = @katID WHERE Id = @id", connect);
+                            command.Parameters.AddWithValue("@toode", UUS_ToodeNimetus);
+                            command.Parameters.AddWithValue("@kog", UUS_Kogus);
+                            command.Parameters.AddWithValue("@pc", UUS_Hind);
+                            command.Parameters.AddWithValue("@pilt", UUS_Pilt);
+                            command.Parameters.AddWithValue("@katID", kategooriaId);
+                            command.Parameters.AddWithValue("@id", val_rida_ID);
+
+                            command.ExecuteNonQuery();
+                            connect.Close();
+                            NaitaAndmed();
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Probleem tekkis uuendamisel: " + ex.Message);
+                        }
+                        finally
+                        {
+                            if (connect.State == ConnectionState.Open)
+                            {
+                                connect.Close();
+                            }
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Vali pilt!");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Sisesta andmed!");
+                }
             }
             else
             {
-                MessageBox.Show("Valige rida ja uus kategooria!");
+                MessageBox.Show("Vali rida DataGridView-l uuendamiseks.");
             }
         }
+
         private void KustutaAndmed(int toodeId)
         {
             connect.Open();
@@ -281,7 +334,7 @@ namespace Tooded_AB
             if (dataGridView1.SelectedRows.Count > 0)
             {
                 string imageName = dataGridView1.SelectedRows[0].Cells["Pilt"].Value.ToString();
-                string imagePath = Path.Combine(@"C:\Users\opilane\source\repos\TARpv22_Maksim_Tsepelevits\Tooded_AB\bin\Debug\Images", imageName);
+                string imagePath = Path.Combine(Path.GetFullPath(@"..\..\Images"), imageName);
 
                 if (File.Exists(imagePath))
                 {
