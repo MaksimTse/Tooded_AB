@@ -1,6 +1,6 @@
-﻿namespace Tooded_AB
+namespace Tooded_AB
 {
-    partial class Form1
+    partial class Admin
     {
         /// <summary>
         /// Required designer variable.
