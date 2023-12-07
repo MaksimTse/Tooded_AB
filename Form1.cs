@@ -156,6 +156,7 @@ namespace Tooded_AB
                         Id = Convert.ToInt32(command.ExecuteScalar());
 
                         string imagePath = open.FileName;
+                        string imageName = Path.GetFileName(imagePath);
 
                         Toode_pb.Image = Image.FromFile(imagePath);
 
@@ -164,7 +165,7 @@ namespace Tooded_AB
                         command.Parameters.AddWithValue("@toode", Toode_txt.Text);
                         command.Parameters.AddWithValue("@kogus", Kogus_txt.Text);
                         command.Parameters.AddWithValue("@hind", Hind_txt.Text);
-                        command.Parameters.AddWithValue("@pilt", imagePath); 
+                        command.Parameters.AddWithValue("@pilt", imageName);
                         command.Parameters.AddWithValue("@kat", Id);
 
                         command.ExecuteNonQuery();
