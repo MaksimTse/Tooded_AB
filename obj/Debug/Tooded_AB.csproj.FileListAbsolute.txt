@@ -3,7 +3,6 @@ C:\Users\opilane\source\repos\TARpv22_Maksim_Tsepelevits\Tooded_AB\bin\Debug\Too
 C:\Users\opilane\source\repos\TARpv22_Maksim_Tsepelevits\Tooded_AB\bin\Debug\Tooded_AB.pdb
 C:\Users\opilane\source\repos\TARpv22_Maksim_Tsepelevits\Tooded_AB\obj\Debug\Tooded_AB.csproj.AssemblyReference.cache
 C:\Users\opilane\source\repos\TARpv22_Maksim_Tsepelevits\Tooded_AB\obj\Debug\Tooded_AB.csproj.SuggestedBindingRedirects.cache
-C:\Users\opilane\source\repos\TARpv22_Maksim_Tsepelevits\Tooded_AB\obj\Debug\Tooded_AB.Form1.resources
 C:\Users\opilane\source\repos\TARpv22_Maksim_Tsepelevits\Tooded_AB\obj\Debug\Tooded_AB.Properties.Resources.resources
 C:\Users\opilane\source\repos\TARpv22_Maksim_Tsepelevits\Tooded_AB\obj\Debug\Tooded_AB.csproj.GenerateResource.cache
 C:\Users\opilane\source\repos\TARpv22_Maksim_Tsepelevits\Tooded_AB\obj\Debug\Tooded_AB.csproj.CoreCompileInputs.cache
@@ -11,3 +10,5 @@ C:\Users\opilane\source\repos\TARpv22_Maksim_Tsepelevits\Tooded_AB\obj\Debug\Too
 C:\Users\opilane\source\repos\TARpv22_Maksim_Tsepelevits\Tooded_AB\obj\Debug\Tooded_AB.pdb
 C:\Users\opilane\source\repos\TARpv22_Maksim_Tsepelevits\Tooded_AB\bin\Debug\AppData\Tooded.mdf
 C:\Users\opilane\source\repos\TARpv22_Maksim_Tsepelevits\Tooded_AB\bin\Debug\AppData\Tooded_log.ldf
+C:\Users\opilane\source\repos\TARpv22_Maksim_Tsepelevits\Tooded_AB\obj\Debug\Tooded_AB.Admin.resources
+C:\Users\opilane\source\repos\TARpv22_Maksim_Tsepelevits\Tooded_AB\obj\Debug\Tooded_AB.Login.resources
