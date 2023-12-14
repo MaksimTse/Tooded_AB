@@ -28,40 +28,41 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.login_btn = new System.Windows.Forms.Button();
+            this.create_user_btn = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.PassLogin = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
+            this.forgot_pass_btn = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // button1
+            // login_btn
             // 
-            this.button1.BackColor = System.Drawing.Color.MediumAquamarine;
-            this.button1.Font = new System.Drawing.Font("Microsoft YaHei", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.button1.Location = new System.Drawing.Point(270, 250);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(267, 47);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Logi sisse";
-            this.button1.UseVisualStyleBackColor = false;
+            this.login_btn.BackColor = System.Drawing.Color.MediumAquamarine;
+            this.login_btn.Font = new System.Drawing.Font("Microsoft YaHei", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.login_btn.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.login_btn.Location = new System.Drawing.Point(270, 250);
+            this.login_btn.Name = "login_btn";
+            this.login_btn.Size = new System.Drawing.Size(267, 47);
+            this.login_btn.TabIndex = 0;
+            this.login_btn.Text = "Logi sisse";
+            this.login_btn.UseVisualStyleBackColor = false;
             // 
-            // button3
+            // create_user_btn
             // 
-            this.button3.BackColor = System.Drawing.Color.LightSeaGreen;
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
-            this.button3.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.button3.Location = new System.Drawing.Point(446, 324);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(91, 47);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "Loo uus konto";
-            this.button3.UseVisualStyleBackColor = false;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.create_user_btn.BackColor = System.Drawing.Color.LightSeaGreen;
+            this.create_user_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.create_user_btn.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.create_user_btn.Location = new System.Drawing.Point(446, 324);
+            this.create_user_btn.Name = "create_user_btn";
+            this.create_user_btn.Size = new System.Drawing.Size(91, 47);
+            this.create_user_btn.TabIndex = 2;
+            this.create_user_btn.Text = "Loo uus konto";
+            this.create_user_btn.UseVisualStyleBackColor = false;
+            this.create_user_btn.Click += new System.EventHandler(this.button3_Click);
             // 
             // textBox1
             // 
@@ -74,6 +75,8 @@
             // 
             this.PassLogin.Location = new System.Drawing.Point(270, 197);
             this.PassLogin.Name = "PassLogin";
+            this.PassLogin.PasswordChar = '*';
+            this.PassLogin.ShortcutsEnabled = false;
             this.PassLogin.Size = new System.Drawing.Size(267, 20);
             this.PassLogin.TabIndex = 4;
             this.PassLogin.UseSystemPasswordChar = true;
@@ -107,31 +110,42 @@
             this.label2.TabIndex = 24;
             this.label2.Text = "Kasutaja nimi";
             // 
-            // button2
+            // forgot_pass_btn
             // 
-            this.button2.BackColor = System.Drawing.Color.DarkSlateGray;
-            this.button2.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.button2.Location = new System.Drawing.Point(378, 168);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(159, 23);
-            this.button2.TabIndex = 25;
-            this.button2.Text = "Unustanud salasõna?";
-            this.button2.UseVisualStyleBackColor = false;
+            this.forgot_pass_btn.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.forgot_pass_btn.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.forgot_pass_btn.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.forgot_pass_btn.Location = new System.Drawing.Point(378, 168);
+            this.forgot_pass_btn.Name = "forgot_pass_btn";
+            this.forgot_pass_btn.Size = new System.Drawing.Size(159, 23);
+            this.forgot_pass_btn.TabIndex = 25;
+            this.forgot_pass_btn.Text = "Unustanud salasõna?";
+            this.forgot_pass_btn.UseVisualStyleBackColor = false;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft YaHei", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(349, 19);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(87, 35);
+            this.label3.TabIndex = 26;
+            this.label3.Text = "Login";
             // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.forgot_pass_btn);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.PassLogin);
             this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.create_user_btn);
+            this.Controls.Add(this.login_btn);
             this.Name = "Login";
             this.Text = "Form2";
             this.ResumeLayout(false);
@@ -141,13 +155,14 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button login_btn;
+        private System.Windows.Forms.Button create_user_btn;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox PassLogin;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button forgot_pass_btn;
+        private System.Windows.Forms.Label label3;
     }
 }

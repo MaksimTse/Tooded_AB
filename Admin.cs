@@ -15,7 +15,7 @@ namespace Tooded_AB
 {
     public partial class Admin : Form
     {
-        SqlConnection connect = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\AppData\Tooded.mdf;Integrated Security=True");
+        SqlConnection connect = new SqlConnection(@"Data Source=HP-CZC2349HTF;Initial Catalog=Tooded;Integrated Security=True");
 
         SqlDataAdapter adapter_toode, adapter_kategooria;
         SqlCommand command;
