@@ -1,0 +1,45 @@
+CREATE TABLE Kategooriatable(
+	Id int PRIMARY KEY IDENTITY (1,1) NOT NULL,
+	Kategooria_nimetus nvarchar(50) NOT NULL,
+	Kirjeldus text NULL
+)
+
+CREATE TABLE Toodetable(
+	Id int PRIMARY KEY IDENTITY(1,1) NOT NULL,
+	Toodenimetus varchar(50) NOT NULL,
+	Kogus int NOT NULL,
+	Hind float NOT NULL,
+	Pilt text NOT NULL,
+	Kategooria int NOT NULL
+	CONSTRAINT [FK_Toodetable_Kategooriatable] FOREIGN KEY ([Kategooria]) REFERENCES [dbo].[Kategooriatable] ([Id])
+)
+
+CREATE TABLE Klient(
+	Id int PRIMARY KEY IDENTITY (1,1) NOT NULL,
+	Nimi varchar(50) NOT NULL,
+	Email varchar(50) NOT NULL,
+	Password text NOT NULL
+)
+
+
+INSERT INTO Kategooriatable(Kategooria_nimetus, Kirjeldus)
+VALUES('Piimatooded','Toode mis tehtud piimast');
+INSERT INTO Kategooriatable(Kategooria_nimetus, Kirjeldus)
+VALUES('Juurviljad','Maitsev juurviljad');
+INSERT INTO Kategooriatable(Kategooria_nimetus, Kirjeldus)
+VALUES('Puuviljad','Maitsev puuviljad');
+INSERT INTO Kategooriatable(Kategooria_nimetus, Kirjeldus)
+VALUES('Lihatooded','Maitsem kui puuviljad');
+
+INSERT INTO Toodetable(Toodenimetus, Kogus, Hind, Pilt, Kategooria)
+VALUES ('Piim',15 ,1.1 ,'Piim.jpg', 1);
+INSERT INTO Toodetable(Toodenimetus, Kogus, Hind, Pilt, Kategooria)
+VALUES ('Juust',21 ,3.2 ,'Juust.jpg', 1);
+INSERT INTO Toodetable(Toodenimetus, Kogus, Hind, Pilt, Kategooria)
+VALUES ('Tomat',32 ,2.7 ,'Tomat.jpg', 2);
+INSERT INTO Toodetable(Toodenimetus, Kogus, Hind, Pilt, Kategooria)
+VALUES ('Banaan',64 ,1.5 ,'Banaan.jpg', 3);
+INSERT INTO Toodetable(Toodenimetus, Kogus, Hind, Pilt, Kategooria)
+VALUES ('Liha',101 ,9 ,'Liha.jpg', 4);
+
+SELECT * FROM Kategooriatable
