@@ -89,7 +89,6 @@
             this.rep_pass_text.Name = "rep_pass_text";
             this.rep_pass_text.Size = new System.Drawing.Size(267, 20);
             this.rep_pass_text.TabIndex = 30;
-            this.rep_pass_text.TextChanged += new System.EventHandler(this.rep_pass_text_TextChanged);
             // 
             // email_box
             // 
@@ -97,7 +96,6 @@
             this.email_box.Name = "email_box";
             this.email_box.Size = new System.Drawing.Size(267, 20);
             this.email_box.TabIndex = 31;
-            this.email_box.TextChanged += new System.EventHandler(this.email_box_TextChanged);
             // 
             // email_txt
             // 

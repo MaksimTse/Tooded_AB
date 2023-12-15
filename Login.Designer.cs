@@ -30,8 +30,8 @@
         {
             this.login_btn = new System.Windows.Forms.Button();
             this.create_user_btn = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.PassLogin = new System.Windows.Forms.TextBox();
+            this.Nimi_box = new System.Windows.Forms.TextBox();
+            this.Pass_box = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -50,6 +50,7 @@
             this.login_btn.TabIndex = 0;
             this.login_btn.Text = "Logi sisse";
             this.login_btn.UseVisualStyleBackColor = false;
+            this.login_btn.Click += new System.EventHandler(this.login_btn_Click);
             // 
             // create_user_btn
             // 
@@ -62,24 +63,23 @@
             this.create_user_btn.TabIndex = 2;
             this.create_user_btn.Text = "Loo uus konto";
             this.create_user_btn.UseVisualStyleBackColor = false;
-            this.create_user_btn.Click += new System.EventHandler(this.button3_Click);
             // 
-            // textBox1
+            // Nimi_box
             // 
-            this.textBox1.Location = new System.Drawing.Point(270, 130);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(267, 20);
-            this.textBox1.TabIndex = 3;
+            this.Nimi_box.Location = new System.Drawing.Point(270, 130);
+            this.Nimi_box.Name = "Nimi_box";
+            this.Nimi_box.Size = new System.Drawing.Size(267, 20);
+            this.Nimi_box.TabIndex = 3;
             // 
-            // PassLogin
+            // Pass_box
             // 
-            this.PassLogin.Location = new System.Drawing.Point(270, 197);
-            this.PassLogin.Name = "PassLogin";
-            this.PassLogin.PasswordChar = '*';
-            this.PassLogin.ShortcutsEnabled = false;
-            this.PassLogin.Size = new System.Drawing.Size(267, 20);
-            this.PassLogin.TabIndex = 4;
-            this.PassLogin.UseSystemPasswordChar = true;
+            this.Pass_box.Location = new System.Drawing.Point(270, 197);
+            this.Pass_box.Name = "Pass_box";
+            this.Pass_box.PasswordChar = '*';
+            this.Pass_box.ShortcutsEnabled = false;
+            this.Pass_box.Size = new System.Drawing.Size(267, 20);
+            this.Pass_box.TabIndex = 4;
+            this.Pass_box.UseSystemPasswordChar = true;
             // 
             // label5
             // 
@@ -89,7 +89,6 @@
             this.label5.Size = new System.Drawing.Size(146, 23);
             this.label5.TabIndex = 22;
             this.label5.Text = "Teil ei ole kontot?";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // label1
             // 
@@ -99,7 +98,6 @@
             this.label1.Size = new System.Drawing.Size(146, 23);
             this.label1.TabIndex = 23;
             this.label1.Text = "Salasõna";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
             // 
@@ -142,8 +140,8 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.PassLogin);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.Pass_box);
+            this.Controls.Add(this.Nimi_box);
             this.Controls.Add(this.create_user_btn);
             this.Controls.Add(this.login_btn);
             this.Name = "Login";
@@ -157,8 +155,8 @@
 
         private System.Windows.Forms.Button login_btn;
         private System.Windows.Forms.Button create_user_btn;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox PassLogin;
+        private System.Windows.Forms.TextBox Nimi_box;
+        private System.Windows.Forms.TextBox Pass_box;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;

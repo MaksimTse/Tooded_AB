@@ -1,40 +1,62 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Data.SqlClient;
 using System.Windows.Forms;
 
 namespace Tooded_AB
 {
     public partial class Login : Form
     {
+        SqlConnection connect = new SqlConnection(@"Data Source=HP-CZC2349HTF;Initial Catalog=Tooded;Integrated Security=True");
+
+        SqlCommand command;
+
         public Login()
         {
             InitializeComponent();
         }
 
-        private void label5_Click(object sender, EventArgs e)
+        private void login_btn_Click(object sender, EventArgs e)
         {
+            string username = Nimi_box.Text.Trim();
+            string password = Pass_box.Text;
 
-        }
+            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
+            {
+                MessageBox.Show("Please enter both username and password.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
-        private void button3_Click(object sender, EventArgs e)
-        {
+            try
+            {
+                connect.Open();
 
-        }
+                string query = "SELECT COUNT(*) FROM Klient WHERE Nimi = @Nimi AND Password = @Password";
+                command = new SqlCommand(query, connect);
 
-        private void button_WOC21_Click(object sender, EventArgs e)
-        {
+                // Add parameters to prevent SQL injection
+                command.Parameters.AddWithValue("@Nimi", username);
+                command.Parameters.AddWithValue("@Password", password);
 
-        }
+                int count = (int)command.ExecuteScalar();
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
+                if (count > 0)
+                {
+                    MessageBox.Show("Login successful!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    // Add code to navigate to the main application or perform other actions upon successful login
+                }
+                else
+                {
+                    MessageBox.Show("Invalid username or password.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                connect.Close();
+            }
         }
     }
 }
