@@ -21,4 +21,11 @@ namespace Tooded_AB
         public string Kategooria_nimetus { get; set; }
         public string Kirjeldus { get; set; }
     }
+    public class Klient
+    {
+        public int Id { get; set; }
+        public string Nimi { get; set; }
+        public string Email { get; set; }
+        public string Password { get; set; }
+    }
 }
