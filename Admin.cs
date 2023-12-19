@@ -29,6 +29,7 @@ namespace Tooded_AB
             InitializeComponent();
             NaitaAndmed();
             NaitaKategooriad();
+            NaitaKlient();
 
             dataGridView1.SelectionChanged += dataGridView1_SelectionChanged;
         }
@@ -63,6 +64,20 @@ namespace Tooded_AB
             
             connect.Close();
         }
+
+        public void NaitaKlient()
+        {
+            connect.Open();
+            DataTable dt_Klient = new DataTable();
+
+            adapter_klient = new SqlDataAdapter("SELECT * FROM Klient", connect);
+            adapter_klient.Fill(dt_Klient);
+            dataGridView2.Columns.Clear();
+            dataGridView2.DataSource = dt_Klient;
+            
+            connect.Close();
+        }
+        
         private void NaitaKategooriad()
         {
             connect.Open();
