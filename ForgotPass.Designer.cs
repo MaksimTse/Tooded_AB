@@ -38,7 +38,7 @@
             // 
             // send_email_btn
             // 
-            this.send_email_btn.BackColor = System.Drawing.Color.MediumAquamarine;
+            this.send_email_btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.send_email_btn.Font = new System.Drawing.Font("Microsoft YaHei", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.send_email_btn.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.send_email_btn.Location = new System.Drawing.Point(320, 249);

@@ -89,6 +89,7 @@
             this.rep_pass_text.Name = "rep_pass_text";
             this.rep_pass_text.Size = new System.Drawing.Size(267, 20);
             this.rep_pass_text.TabIndex = 30;
+            this.rep_pass_text.TextChanged += new System.EventHandler(this.rep_pass_text_TextChanged);
             // 
             // email_box
             // 
@@ -96,6 +97,7 @@
             this.email_box.Name = "email_box";
             this.email_box.Size = new System.Drawing.Size(267, 20);
             this.email_box.TabIndex = 31;
+            this.email_box.TextChanged += new System.EventHandler(this.email_box_TextChanged);
             // 
             // email_txt
             // 
@@ -108,7 +110,7 @@
             // 
             // reg_btn
             // 
-            this.reg_btn.BackColor = System.Drawing.Color.MediumAquamarine;
+            this.reg_btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.reg_btn.Font = new System.Drawing.Font("Microsoft YaHei", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.reg_btn.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.reg_btn.Location = new System.Drawing.Point(279, 317);
@@ -138,7 +140,7 @@
             this.cancel_reg_btn.Name = "cancel_reg_btn";
             this.cancel_reg_btn.Size = new System.Drawing.Size(71, 29);
             this.cancel_reg_btn.TabIndex = 35;
-            this.cancel_reg_btn.Text = "Cancel";
+            this.cancel_reg_btn.Text = "Tühista";
             this.cancel_reg_btn.UseVisualStyleBackColor = false;
             this.cancel_reg_btn.Click += new System.EventHandler(this.cancel_reg_btn_Click);
             // 

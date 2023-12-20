@@ -30,18 +30,19 @@
         {
             this.login_btn = new System.Windows.Forms.Button();
             this.create_user_btn = new System.Windows.Forms.Button();
-            this.Nimi_box = new System.Windows.Forms.TextBox();
-            this.Pass_box = new System.Windows.Forms.TextBox();
+            this.name = new System.Windows.Forms.TextBox();
+            this.PassLogin = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.forgot_pass_btn = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
+            this.exit_btn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // login_btn
             // 
-            this.login_btn.BackColor = System.Drawing.Color.MediumAquamarine;
+            this.login_btn.BackColor = System.Drawing.Color.Blue;
             this.login_btn.Font = new System.Drawing.Font("Microsoft YaHei", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.login_btn.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.login_btn.Location = new System.Drawing.Point(270, 250);
@@ -54,7 +55,7 @@
             // 
             // create_user_btn
             // 
-            this.create_user_btn.BackColor = System.Drawing.Color.LightSeaGreen;
+            this.create_user_btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.create_user_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
             this.create_user_btn.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.create_user_btn.Location = new System.Drawing.Point(446, 324);
@@ -63,23 +64,24 @@
             this.create_user_btn.TabIndex = 2;
             this.create_user_btn.Text = "Loo uus konto";
             this.create_user_btn.UseVisualStyleBackColor = false;
+            this.create_user_btn.Click += new System.EventHandler(this.button3_Click);
             // 
-            // Nimi_box
+            // name
             // 
-            this.Nimi_box.Location = new System.Drawing.Point(270, 130);
-            this.Nimi_box.Name = "Nimi_box";
-            this.Nimi_box.Size = new System.Drawing.Size(267, 20);
-            this.Nimi_box.TabIndex = 3;
+            this.name.Location = new System.Drawing.Point(270, 130);
+            this.name.Name = "name";
+            this.name.Size = new System.Drawing.Size(267, 20);
+            this.name.TabIndex = 3;
             // 
-            // Pass_box
+            // PassLogin
             // 
-            this.Pass_box.Location = new System.Drawing.Point(270, 197);
-            this.Pass_box.Name = "Pass_box";
-            this.Pass_box.PasswordChar = '*';
-            this.Pass_box.ShortcutsEnabled = false;
-            this.Pass_box.Size = new System.Drawing.Size(267, 20);
-            this.Pass_box.TabIndex = 4;
-            this.Pass_box.UseSystemPasswordChar = true;
+            this.PassLogin.Location = new System.Drawing.Point(270, 197);
+            this.PassLogin.Name = "PassLogin";
+            this.PassLogin.PasswordChar = '*';
+            this.PassLogin.ShortcutsEnabled = false;
+            this.PassLogin.Size = new System.Drawing.Size(267, 20);
+            this.PassLogin.TabIndex = 4;
+            this.PassLogin.UseSystemPasswordChar = true;
             // 
             // label5
             // 
@@ -89,6 +91,7 @@
             this.label5.Size = new System.Drawing.Size(146, 23);
             this.label5.TabIndex = 22;
             this.label5.Text = "Teil ei ole kontot?";
+            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // label1
             // 
@@ -98,6 +101,7 @@
             this.label1.Size = new System.Drawing.Size(146, 23);
             this.label1.TabIndex = 23;
             this.label1.Text = "Salasõna";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
             // 
@@ -110,7 +114,7 @@
             // 
             // forgot_pass_btn
             // 
-            this.forgot_pass_btn.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.forgot_pass_btn.BackColor = System.Drawing.Color.Navy;
             this.forgot_pass_btn.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.forgot_pass_btn.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.forgot_pass_btn.Location = new System.Drawing.Point(378, 168);
@@ -130,18 +134,31 @@
             this.label3.TabIndex = 26;
             this.label3.Text = "Login";
             // 
+            // exit_btn
+            // 
+            this.exit_btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.exit_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.exit_btn.Location = new System.Drawing.Point(467, 377);
+            this.exit_btn.Name = "exit_btn";
+            this.exit_btn.Size = new System.Drawing.Size(70, 26);
+            this.exit_btn.TabIndex = 27;
+            this.exit_btn.Text = "Tühista";
+            this.exit_btn.UseVisualStyleBackColor = false;
+            this.exit_btn.Click += new System.EventHandler(this.exit_btn_Click);
+            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.exit_btn);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.forgot_pass_btn);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.Pass_box);
-            this.Controls.Add(this.Nimi_box);
+            this.Controls.Add(this.PassLogin);
+            this.Controls.Add(this.name);
             this.Controls.Add(this.create_user_btn);
             this.Controls.Add(this.login_btn);
             this.Name = "Login";
@@ -155,12 +172,13 @@
 
         private System.Windows.Forms.Button login_btn;
         private System.Windows.Forms.Button create_user_btn;
-        private System.Windows.Forms.TextBox Nimi_box;
-        private System.Windows.Forms.TextBox Pass_box;
+        private System.Windows.Forms.TextBox name;
+        private System.Windows.Forms.TextBox PassLogin;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button forgot_pass_btn;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button exit_btn;
     }
 }

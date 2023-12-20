@@ -26,5 +26,16 @@ namespace Tooded_AB
         {
 
         }
+
+        private void Kassa_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void login_btn_Click(object sender, EventArgs e)
+        {
+            Login loginForm = new Login();
+            loginForm.Show();
+        }
     }
 }

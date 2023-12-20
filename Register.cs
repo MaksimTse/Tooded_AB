@@ -72,89 +72,22 @@ namespace Tooded_AB
             string nimi = nimi_box.Text.Trim();
             string email = email_box.Text.Trim();
             string password = pass_box.Text;
-            string repeatedPassword = rep_pass_text.Text;
 
             // Validate that all fields are filled
-            if (string.IsNullOrEmpty(nimi) || string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password) || string.IsNullOrEmpty(repeatedPassword))
+            if (string.IsNullOrEmpty(nimi) || string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
             {
                 MessageBox.Show("Please fill in all fields.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-
-            // Validate email format
-            if (!email.EndsWith("@gmail.com"))
-            {
-                MessageBox.Show("Email must end with @gmail.com.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            // Validate password requirements
-            List<string> passwordErrors = GetPasswordErrors(password);
-
-            if (passwordErrors.Count > 0)
-            {
-                StringBuilder errorMessage = new StringBuilder();
-                errorMessage.AppendLine("Password must meet the following requirements:");
-                foreach (string error in passwordErrors)
-                {
-                    errorMessage.AppendLine("- " + error);
-                }
-
-                MessageBox.Show(errorMessage.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                pass_box.Clear();
-                return;
-            }
-
-            // Validate password match
-            if (password != repeatedPassword)
-            {
-                MessageBox.Show("Passwords do not match.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            // All validations passed, add client to the database
             AddClientToDatabase(nimi, email, password);
 
-            Login loginForm = new Login();
-            loginForm.Show();
-
-
             // Additional logic or UI updates can be added here
-            this.Hide();
             ClearInputFields();
-
         }
-
-        private List<string> GetPasswordErrors(string password)
-        {
-            List<string> errors = new List<string>();
-
-            if (password.Length < 8)
-            {
-                errors.Add("Password must be at least 8 characters long.");
-            }
-
-            if (!password.Any(char.IsDigit))
-            {
-                errors.Add("Password must contain at least one digit.");
-            }
-
-            if (!password.Any(char.IsUpper))
-            {
-                errors.Add("Password must contain at least one uppercase letter.");
-            }
-
-            return errors;
-        }
-
-
 
         private void cancel_reg_btn_Click(object sender, EventArgs e)
         {
-            Login loginForm = new Login();
-            loginForm.Show();
-            
-            this.Hide();
+            this.Close();
         }
 
         private void ClearInputFields()
@@ -166,6 +99,42 @@ namespace Tooded_AB
 
         private void pass_box_TextChanged(object sender, EventArgs e)
         {
+            string password = pass_box.Text;
+
+            if (!IsPasswordValid(password))
+            {
+                MessageBox.Show("Password must meet certain requirements.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                pass_box.Clear();
+            }
+        }
+
+        private bool IsPasswordValid(string password)
+        {
+            return password.Length >= 8 &&
+                   password.Any(char.IsDigit) &&
+                   password.Any(char.IsUpper);
+        }
+        private void email_box_TextChanged(object sender, EventArgs e)
+        {
+            string email = email_box.Text;
+
+            if (!email.EndsWith("@gmail.com"))
+            {
+                MessageBox.Show("Email must end with @gmail.com.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                email_box.Clear();
+            }
+        }
+
+        private void rep_pass_text_TextChanged(object sender, EventArgs e)
+        {
+            string password = pass_box.Text;
+            string repeatedPassword = rep_pass_text.Text;
+
+            if (password != repeatedPassword)
+            {
+                MessageBox.Show("Passwords do not match.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                rep_pass_text.Clear();
+            }
         }
     }
 }

@@ -34,11 +34,9 @@
             this.button1 = new System.Windows.Forms.Button();
             this.toode_pic = new System.Windows.Forms.PictureBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.reklaam_pic = new System.Windows.Forms.PictureBox();
             this.kassa_btn = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.toode_pic)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.reklaam_pic)).BeginInit();
             this.SuspendLayout();
             // 
             // lisa_box
@@ -96,14 +94,6 @@
             this.comboBox1.Size = new System.Drawing.Size(210, 21);
             this.comboBox1.TabIndex = 5;
             // 
-            // reklaam_pic
-            // 
-            this.reklaam_pic.Location = new System.Drawing.Point(784, 31);
-            this.reklaam_pic.Name = "reklaam_pic";
-            this.reklaam_pic.Size = new System.Drawing.Size(181, 573);
-            this.reklaam_pic.TabIndex = 6;
-            this.reklaam_pic.TabStop = false;
-            // 
             // kassa_btn
             // 
             this.kassa_btn.BackColor = System.Drawing.SystemColors.ButtonFace;
@@ -133,7 +123,6 @@
             this.ClientSize = new System.Drawing.Size(1030, 624);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.kassa_btn);
-            this.Controls.Add(this.reklaam_pic);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.toode_pic);
             this.Controls.Add(this.button1);
@@ -143,7 +132,6 @@
             this.Name = "Tooded";
             this.Text = "Tooded";
             ((System.ComponentModel.ISupportInitialize)(this.toode_pic)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.reklaam_pic)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -157,7 +145,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.PictureBox toode_pic;
         private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.PictureBox reklaam_pic;
         private System.Windows.Forms.Button kassa_btn;
         private System.Windows.Forms.Label label1;
     }

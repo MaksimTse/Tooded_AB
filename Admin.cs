@@ -17,7 +17,7 @@ namespace Tooded_AB
     {
         SqlConnection connect = new SqlConnection(@"Data Source=HP-CZC2349HTF;Initial Catalog=Tooded;Integrated Security=True");
 
-        SqlDataAdapter adapter_toode, adapter_kategooria;
+        SqlDataAdapter adapter_toode, adapter_kategooria, adapter_klient;
         SqlCommand command;
 
         SaveFileDialog save;
@@ -74,10 +74,10 @@ namespace Tooded_AB
             adapter_klient.Fill(dt_Klient);
             dataGridView2.Columns.Clear();
             dataGridView2.DataSource = dt_Klient;
-            
+
             connect.Close();
         }
-        
+
         private void NaitaKategooriad()
         {
             connect.Open();
@@ -298,6 +298,15 @@ namespace Tooded_AB
             connect.Close();
         }
 
+        private void KustutaAndmed2(int Id)
+        {
+            connect.Open();
+            SqlCommand deleteCommand = new SqlCommand("DELETE FROM Klient WHERE Id = @Id", connect);
+            deleteCommand.Parameters.AddWithValue("Id", Id);
+            deleteCommand.ExecuteNonQuery();
+            connect.Close();
+        }
+
         private void Kustuta_btn_Click(object sender, EventArgs e)
         {
             if (dataGridView1.SelectedRows.Count > 0)
@@ -314,6 +323,24 @@ namespace Tooded_AB
                 MessageBox.Show("Valige rida, mida soovite kustutada!");
             }
         }
+
+        private void kustuta_klient_Click(object sender, EventArgs e)
+        {
+            if (dataGridView2.SelectedRows.Count > 0)
+            {
+                int selectedRowIndex = dataGridView2.SelectedRows[0].Index;
+                int selectedKlientId = Convert.ToInt32(dataGridView2.Rows[selectedRowIndex].Cells["Id"].Value);
+
+                KustutaAndmed2(selectedKlientId);
+
+                NaitaKlient();
+            }
+            else
+            {
+                MessageBox.Show("Valige rida, mida soovite kustutada!");
+            }
+        }
+
         private void otsi_fail_btn_Click(object sender, EventArgs e)
         {
             open = new OpenFileDialog();

@@ -46,8 +46,11 @@
             this.Lisa_Kat_btn = new System.Windows.Forms.Button();
             this.Lisa = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.button3 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Toode_pb)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -205,11 +208,31 @@
             this.label5.TabIndex = 21;
             this.label5.Text = "Kategooria";
             // 
+            // dataGridView2
+            // 
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Location = new System.Drawing.Point(846, 236);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.Size = new System.Drawing.Size(464, 193);
+            this.dataGridView2.TabIndex = 22;
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(846, 193);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(70, 37);
+            this.button3.TabIndex = 23;
+            this.button3.Text = "Kustuta klient";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.kustuta_klient_Click);
+            // 
             // Admin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1338, 450);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.dataGridView2);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.Lisa);
             this.Controls.Add(this.Lisa_Kat_btn);
@@ -232,6 +255,7 @@
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Toode_pb)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -257,6 +281,8 @@
         private System.Windows.Forms.Button Lisa_Kat_btn;
         private System.Windows.Forms.Button Lisa;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.Button button3;
     }
 }
 
