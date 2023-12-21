@@ -33,7 +33,7 @@
             this.add_item_btn = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.toode_pic = new System.Windows.Forms.PictureBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.Kat_Box = new System.Windows.Forms.ComboBox();
             this.kassa_btn = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.toode_pic)).BeginInit();
@@ -46,7 +46,6 @@
             this.lisa_box.Name = "lisa_box";
             this.lisa_box.Size = new System.Drawing.Size(210, 212);
             this.lisa_box.TabIndex = 0;
-            this.lisa_box.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
             // eemalda_box
             // 
@@ -66,6 +65,7 @@
             this.add_item_btn.TabIndex = 2;
             this.add_item_btn.Text = "Lisa";
             this.add_item_btn.UseVisualStyleBackColor = false;
+            this.add_item_btn.Click += new System.EventHandler(this.add_item_btn_Click);
             // 
             // button1
             // 
@@ -77,34 +77,38 @@
             this.button1.TabIndex = 3;
             this.button1.Text = "Eemalda";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.delete_item_btn_Click);
             // 
             // toode_pic
             // 
-            this.toode_pic.Location = new System.Drawing.Point(56, 173);
+            this.toode_pic.Location = new System.Drawing.Point(55, 161);
             this.toode_pic.Name = "toode_pic";
             this.toode_pic.Size = new System.Drawing.Size(286, 284);
             this.toode_pic.TabIndex = 4;
             this.toode_pic.TabStop = false;
+            this.toode_pic.Click += new System.EventHandler(this.toode_pic_Click);
             // 
-            // comboBox1
+            // Kat_Box
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(421, 57);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(210, 21);
-            this.comboBox1.TabIndex = 5;
+            this.Kat_Box.FormattingEnabled = true;
+            this.Kat_Box.Location = new System.Drawing.Point(421, 57);
+            this.Kat_Box.Name = "Kat_Box";
+            this.Kat_Box.Size = new System.Drawing.Size(210, 21);
+            this.Kat_Box.TabIndex = 5;
+            this.Kat_Box.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // kassa_btn
             // 
-            this.kassa_btn.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.kassa_btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.kassa_btn.Font = new System.Drawing.Font("Microsoft YaHei", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.kassa_btn.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.kassa_btn.Location = new System.Drawing.Point(65, 523);
+            this.kassa_btn.Location = new System.Drawing.Point(89, 523);
             this.kassa_btn.Name = "kassa_btn";
-            this.kassa_btn.Size = new System.Drawing.Size(266, 59);
+            this.kassa_btn.Size = new System.Drawing.Size(222, 59);
             this.kassa_btn.TabIndex = 7;
-            this.kassa_btn.Text = "liigu kassasse";
+            this.kassa_btn.Text = "Kassa";
             this.kassa_btn.UseVisualStyleBackColor = false;
+            this.kassa_btn.Click += new System.EventHandler(this.kassa_btn_Click);
             // 
             // label1
             // 
@@ -123,7 +127,7 @@
             this.ClientSize = new System.Drawing.Size(1030, 624);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.kassa_btn);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.Kat_Box);
             this.Controls.Add(this.toode_pic);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.add_item_btn);
@@ -144,7 +148,7 @@
         private System.Windows.Forms.Button add_item_btn;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.PictureBox toode_pic;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox Kat_Box;
         private System.Windows.Forms.Button kassa_btn;
         private System.Windows.Forms.Label label1;
     }

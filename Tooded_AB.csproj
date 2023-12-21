@@ -51,7 +51,9 @@
     <Reference Include="Aspose.PDF, Version=23.11.1.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
       <HintPath>packages\Aspose.PDF.23.11.1\lib\net4.0\Aspose.PDF.dll</HintPath>
     </Reference>
-    <Reference Include="System" />
+    <Reference Include="System">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.dll</HintPath>
+    </Reference>
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
